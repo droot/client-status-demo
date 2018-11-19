@@ -1,0 +1,3 @@
+version: "1"
+domain: examples.org
+repo: github.com/droot/client-status-demo
