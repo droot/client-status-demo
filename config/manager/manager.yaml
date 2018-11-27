@@ -27,15 +27,19 @@ metadata:
   namespace: system
   labels:
     control-plane: controller-manager
-    service-type: metrics
     controller-tools.k8s.io: "1.0"
+  annotations:
+    prometheus.io/scrape: 'true'
+    prometheus.io/scheme: "https"
+    prometheus.io/port: "8443"
 spec:
   selector:
     control-plane: controller-manager
     controller-tools.k8s.io: "1.0"
   ports:
-  - port: 8080
-    name: web
+  - port: 8443
+    name: https
+    targetPort: https
 ---
 apiVersion: apps/v1
 kind: StatefulSet
