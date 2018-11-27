@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: krp-curl
+  namespace: stackdriver
+spec:
+  template:
+    metadata:
+      name: krp-curl
+    spec:
+      serviceAccountName: prometheus
+      containers:
+      - name: krp-curl
+        image: gcr.io/sunilarora-sandbox/krpc:latest
+      restartPolicy: Never
+  backoffLimit: 4
